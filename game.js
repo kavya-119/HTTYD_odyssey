@@ -19,6 +19,17 @@ let dragonFrameIndex=0;
 let dragonAnimTimer=0;
 const DRAGON_ANIM_SPEED=8;
 
+// ================= OBJECT IMAGES =================
+const obstacleImg = new Image();
+obstacleImg.src = "assets/obstacle.png";
+
+const fishImg = new Image();
+fishImg.src = "assets/fish.png";
+
+const heartImg = new Image();
+heartImg.src = "assets/heart.png";
+
+
 // ================= AUDIO SYSTEM =================
 const AudioCtx = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioCtx();
@@ -139,8 +150,7 @@ function drawUI(){
 
     ctx.fillText("Health:",10,40);
     for(let i=0;i<health;i++){
-        ctx.fillStyle="red";
-        ctx.fillRect(70+i*20,30,15,15);
+        ctx.drawImage(heartImg, 70 + i*22, 25, 20, 20);
     }
 
     ctx.fillStyle="black";
@@ -151,13 +161,15 @@ function drawUI(){
 
 // ================= HELPERS =================
 function spawnObstacle(){
-    obstacles.push({x:canvas.width,y:Math.random()*300+50,width:30,height:30});
+    obstacles.push({x:canvas.width,y:Math.random()*300+50,width:45,height:45});
 }
+
 function spawnFish(){
     const waterTop=canvas.height-80;
     const waterBottom=canvas.height-15;
-    fishes.push({x:canvas.width,y:Math.random()*(waterBottom-waterTop)+waterTop,width:20,height:12});
+    fishes.push({x:canvas.width,y:Math.random()*(waterBottom-waterTop)+waterTop,width:30,height:20});
 }
+
 function hit(a,b){
     return a.x<b.x+b.width&&a.x+a.width>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y;
 }
@@ -195,7 +207,7 @@ function update(){
         ctx.fillStyle="rgba(0,0,0,0.6)";
         ctx.fillRect(0,0,canvas.width,canvas.height);
         ctx.fillStyle="white";
-        ctx.font="32px monospace";
+        ctx.font="32px Times New Roman";
         ctx.fillText("GAME OVER",280,160);
         ctx.fillText("Score: "+Math.floor(score),300,200);
         ctx.restore();
@@ -230,8 +242,7 @@ function update(){
     if(Math.random()<0.02)spawnObstacle();
     obstacles.forEach((o,i)=>{
         o.x-=speed;
-        ctx.fillStyle="#555";
-        ctx.fillRect(o.x,o.y,o.width,o.height);
+        ctx.drawImage(obstacleImg, o.x, o.y, o.width, o.height);
         if(hit(player,o)){damagePlayer();obstacles.splice(i,1);}
         if(o.x<-50)obstacles.splice(i,1);
     });
@@ -240,8 +251,7 @@ function update(){
     if(Math.random()<0.008)spawnFish();
     fishes.forEach((f,i)=>{
         f.x-=speed;
-        ctx.fillStyle="#3aa6ff";
-        ctx.fillRect(f.x,f.y,f.width,f.height);
+        ctx.drawImage(fishImg, f.x, f.y, f.width, f.height);
         if(hit(player,f)){if(health<3)health++;fishes.splice(i,1);}
         if(f.x<-50)fishes.splice(i,1);
     });
