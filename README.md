@@ -60,10 +60,9 @@ git clone https://github.com/kavya-119/HTTYD_odyssey.git
 
 ## 🚀 Future Improvements
 
-- Add more dragons
-- Add obstacles and enemies
-- Add score system
-- Add sound effects and music
+- Add more dragons and backgrounds
+- Add enemies
+- Record score system
 - Improve animations
 - Add mobile support
 
