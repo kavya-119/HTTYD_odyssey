@@ -2,24 +2,53 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// ================= BACKGROUND =================
+// ================= SEASON BACKGROUNDS =================
+const backgrounds = [
+    "assets/bg_spring.png",
+    "assets/bg_summer.png",
+    "assets/bg_winter.png"
+];
+
+let season = 0;
+
 const bgImg = new Image();
-bgImg.src = "assets/background.png";
+bgImg.src = backgrounds[season];
 let bgX = 0;
 
-// ================= DRAGON FRAMES =================
-const dragonFrames=[];
-for(let i=1;i<=3;i++){
-    const img=new Image();
-    img.src=`assets/dragon${i}.png`;
-    dragonFrames.push(img);
+// ================= DRAGON SEASONS =================
+
+// Each dragon has 3 animation frames
+const dragonSets = [
+    ["assets/dragon1_1.png","assets/dragon1_2.png","assets/dragon1_3.png"], // Season 1
+    ["assets/dragon2_1.png","assets/dragon2_2.png","assets/dragon2_3.png"], // Season 2
+    ["assets/dragon3_1.png","assets/dragon3_2.png","assets/dragon3_3.png"]  // Season 3
+];
+
+let dragonFrames = [];
+let currentDragon = 0;
+
+// Load dragon frames dynamically
+function loadDragon(set){
+    dragonFrames = [];
+    set.forEach(src=>{
+        const img = new Image();
+        img.src = src;
+        dragonFrames.push(img);
+    });
 }
 
-let dragonFrameIndex=0;
-let dragonAnimTimer=0;
-const DRAGON_ANIM_SPEED=8;
+// Load first dragon initially
+loadDragon(dragonSets[0]);
+
+let dragonFrameIndex = 0;
+let dragonAnimTimer = 0;
+const DRAGON_ANIM_SPEED = 8;
 
 // ================= OBJECT IMAGES =================
+// ================= HOME SCREEN IMAGE =================
+const homeImg = new Image();
+homeImg.src = "assets/HTTYD_HOME.png";
+
 const obstacleImg = new Image();
 obstacleImg.src = "assets/obstacle.png";
 
@@ -58,7 +87,7 @@ let shakeTime=0;
 let damageFlash=0;
 
 // ================= PLAYER =================
-const player={x:100,y:200,width:120,height:80};
+const player={x:100,y:200,width:160,height:110};
 
 // arrays
 let obstacles=[];
@@ -193,10 +222,19 @@ function update(){
 
     // START SCREEN
     if(gameState==="start"){
-        ctx.fillStyle="black";
-        ctx.font="30px monospace";
-        ctx.fillText("DRAGON RIDER",250,150);
-        ctx.fillText("Press any key",300,200);
+
+        if(homeImg.complete){
+            ctx.drawImage(homeImg, 0, 0, canvas.width, canvas.height);
+        }
+
+    // Press play text
+        ctx.fillStyle="white";
+        ctx.font="28px monospace";
+        ctx.textAlign="center";
+        if(Math.floor(frame/30)%2===0){
+            ctx.fillText("Press Any Key To Start", canvas.width/2, canvas.height-80);
+        }
+
         ctx.restore();
         requestAnimationFrame(update);
         return;
@@ -287,8 +325,39 @@ function update(){
     });
 
     // SPEED SCALE
-    score+=0.1;
-    speed=3+score/200;
+    score += 0.2;
+    speed = 3 + score/200;
+
+    // season change every 500 score
+    let newSeason = Math.floor(score / 500) % 3;
+
+    if(newSeason !== season){
+        season = newSeason;
+
+    // change background
+        bgImg.src = backgrounds[season];
+
+    // change dragon
+        loadDragon(dragonSets[season]);
+
+    // trigger cloud effect
+        spawnPoof();
+    }
+
+    poofCloud.forEach((p,i)=>{
+        p.x += p.dx;
+        p.y += p.dy;
+        p.life--;
+
+        ctx.fillStyle = "rgba(255,255,255," + (p.life/30) + ")";
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,8,0,Math.PI*2);
+        ctx.fill();
+
+        if(p.life<=0) poofCloud.splice(i,1);
+    });
+
+    
 
     drawUI();
     ctx.restore();
@@ -304,6 +373,20 @@ function update(){
 
     frame++;
     requestAnimationFrame(update);
+}
+// ================= DRAGON TRANSFORM EFFECT =================
+let poofCloud = [];
+
+function spawnPoof(){
+    for(let i=0;i<40;i++){
+        poofCloud.push({
+            x:player.x+60,
+            y:player.y+40,
+            dx:(Math.random()-0.5)*6,
+            dy:(Math.random()-0.5)*6,
+            life:30
+        });
+    }
 }
 
 update();
