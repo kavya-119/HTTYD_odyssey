@@ -1,64 +1,83 @@
-﻿🐉 *HTTYD*
+# 🐉 HTTYD – Dragon Rider Game
 
-HTTYD is a browser-based dragon flying game inspired by the world of How to Train Your Dragon.
-The game allows players to control a dragon, fly across different seasonal environments, and experience a dynamic animated world.
+HTTYD is a browser-based dragon flying game inspired by the world of *How to Train Your Dragon*.  
+The game allows players to control a dragon and fly through beautiful seasonal environments with animated backgrounds.
 
-The project focuses on creating an interactive gameplay experience using web technologies like HTML, CSS, and JavaScript.
+This project focuses on creating an interactive game experience using core web technologies such as HTML, CSS, and JavaScript.
 
-🎮 *Features*
+---
 
-🐲 Dragon flight mechanics
-🌍 Dynamic seasonal backgrounds (Summer, Winter, Spring, etc.)
-🌊 Ocean/lake environment at the bottom of the map
-🎨 Animated backgrounds designed for carousel-style scrolling
-🏠 Homepage start screen with "Press Play to Start"
-🎯 Interactive gameplay with keyboard controls
+## 🎮 Features
 
-🛠️ Technologies Used
->HTML5 – Game structure and layout
->CSS3 – Styling and animations
->JavaScript – Game logic and interactivity
->Canvas API – Rendering game elements and animations
+- 🐲 Play as a dragon rider
+- 🌍 Seasonal backgrounds (Summer, Winter, Spring)
+- 🌊 Ocean/lake environment at the bottom of the map
+- 🎨 Smooth scrolling background designed for carousel-style movement
+- 🏠 Homepage screen with **Press Play to Start**
+- 🎯 Interactive gameplay
 
-📂 Project Structure
-HTTYD_odyssey
+---
 
+## 🛠 Technologies Used
+
+- **HTML5** – Structure of the game
+- **CSS3** – Styling and layout
+- **JavaScript** – Game logic and animation
+- **Canvas API** – Rendering graphics and movement
+
+---
+
+## 📂 Project Structure
+
+```
+HTTYD
 │
-
 ├── index.html
-
 ├── style.css
-
 ├── script.js
-
 ├── assets
-
 │   ├── images
-
 │   ├── backgrounds
-
 │   └── dragon
-
 └── README.md
+```
 
+---
 
-▶️ How to Run the Game
+## ▶️ How to Run the Game
 
-Clone the repository
+1. Clone the repository
+
+```
 git clone https://github.com/kavya-119/HTTYD_odyssey.git
-Open the project folder.
-Run index.html in your browser.
+```
 
-🚀 Future Improvements
+2. Open the project folder.
 
-Add more dragons and abilities
-Add obstacles and enemies
-Score system and leaderboard
-Sound effects and background music
-Mobile responsiveness
+3. Run **index.html** in any web browser.
 
-👩‍💻 Author
+---
 
-Kavya C
-GitHub:
+## 🚀 Future Improvements
+
+- Add more dragons
+- Add obstacles and enemies
+- Add score system
+- Add sound effects and music
+- Improve animations
+- Add mobile support
+
+---
+
+## 👩‍💻 Author
+
+**Kavya C**
+
+GitHub:  
 https://github.com/kavya-119
+
+---
+
+## 📜 Inspiration
+
+Inspired by the animated movie **How to Train Your Dragon**.
