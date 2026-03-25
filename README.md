@@ -1,4 +1,4 @@
-# 🐉 HTTYD – Dragon Rider Game
+#  HTTYD – Dragon Rider Game
 
 HTTYD is a browser-based dragon flying game inspired by the world of *How to Train Your Dragon*.  
 The game allows players to control a dragon and fly through beautiful seasonal environments with animated backgrounds.
@@ -7,18 +7,18 @@ This project focuses on creating an interactive game experience using core web t
 
 ---
 
-## 🎮 Features
+##  Features
 
-- 🐲 Play as a dragon rider
-- 🌍 Seasonal backgrounds (Summer, Winter, Spring)
-- 🌊 Ocean/lake environment at the bottom of the map
-- 🎨 Smooth scrolling background designed for carousel-style movement
-- 🏠 Homepage screen with **Press Play to Start**
-- 🎯 Interactive gameplay
+-  Play as a dragon rider
+-  Seasonal backgrounds (Summer, Winter, Spring)
+-  Ocean/lake environment at the bottom of the map
+-  Smooth scrolling background designed for carousel-style movement
+-  Homepage screen with **Press Play to Start**
+-  Interactive gameplay
 
 ---
 
-## 🛠 Technologies Used
+##  Technologies Used
 
 - **HTML5** – Structure of the game
 - **CSS3** – Styling and layout
@@ -27,7 +27,7 @@ This project focuses on creating an interactive game experience using core web t
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 HTTYD
@@ -44,7 +44,7 @@ HTTYD
 
 ---
 
-## ▶️ How to Run the Game
+##  How to Run the Game
 
 1. Clone the repository
 
@@ -58,7 +58,7 @@ git clone https://github.com/kavya-119/HTTYD_odyssey.git
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 - Add more dragons and backgrounds
 - Add enemies
@@ -68,7 +68,7 @@ git clone https://github.com/kavya-119/HTTYD_odyssey.git
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 **Kavya C**
 
@@ -77,6 +77,6 @@ https://github.com/kavya-119
 
 ---
 
-## 📜 Inspiration
+##  Inspiration
 
 Inspired by the animated movie **How to Train Your Dragon**.
